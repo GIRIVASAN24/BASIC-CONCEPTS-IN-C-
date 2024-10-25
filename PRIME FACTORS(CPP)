@@ -1,0 +1,34 @@
+class Solution{
+	public:
+	vector<int>AllPrimeFactors(int N) {
+	    vector<int>ans;
+	    vector<int>v;
+	    for(int i=1;i<=sqrt(N);i++){
+	        if(N%i==0){
+	            int q=N/i;
+	            if(q==i){
+	                ans.push_back(q);
+	            }
+	            else if(q!=i){
+	                ans.push_back(q);
+	                ans.push_back(i);
+	            }
+	        }
+	    }
+	    for(int i=0;i<ans.size();i++){
+	        int x=ans[i];
+	        int flag =0;
+	        for(int j=2;j<=sqrt(x);j++){
+	            if(x%j==0){
+	                flag=1;
+	            }
+	        }
+	        if(x!=1&&flag==0){
+	            v.push_back(x);
+	        }
+	    }
+	    sort(v.begin(),v.end());
+	    return v;
+	    
+	}
+};
